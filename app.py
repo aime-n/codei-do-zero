@@ -23,10 +23,10 @@ def run_progress_bar():
         time.sleep(0.1)  # Pausa entre as atualizações
 
 
-# musica1 = get_musica_1()
-# text_to_midi(musica1, output_midi_file="musica1.mid")
-# midi_to_mp3(midi_file_path='musica1.mid', mp3_file_path='musica1.mp3')
-# st.audio('musica1.mp3', format='audio/mp3')
+musica1 = get_musica_1()
+text_to_midi(musica1, output_midi_file="musica1.mid")
+midi_to_mp3(midi_file_path='musica1.mid', mp3_file_path='musica1.mp3')
+st.audio('musica1.mp3', format='audio/mp3')
 # Botão para preencher o campo de texto
 song_input_default = ""
 
