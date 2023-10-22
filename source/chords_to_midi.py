@@ -50,8 +50,8 @@ def text_to_midi(text, output_midi_file):
         midi.writeFile(midi_file)
     print(f"MIDI file '{output_midi_file}' has been created.")
 
-with open('midi_data\love_me_do.txt', 'r') as file:
+with open('./saidas_gustavo.txt', 'r') as file:
     music_text = file.read()
 
 # Convert the text to a MIDI file
-text_to_midi(music_text, "output_lovemedo.mid")
+text_to_midi(music_text, "output_lovemedo2.mid")

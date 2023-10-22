@@ -1,18 +1,7 @@
 import streamlit as st
 import cohere
-import os
-from midi2audio import FluidSynth
-import ffmpeg
-
-def generate_song(song_input):
-    pass
-
-def midi_to_mp3(mid_file, wav_file, mp3_file):
-    fs = FluidSynth()
-    fs.midi_to_audio(mid_file, wav_file)
-
-    os.system(f'ffmpeg -i {wav_file} -ar 44100 -ac 2 -b:a 192k {mp3_file}')
-
+from source.midi_to_mp3 import midi_to_mp3
+from source.model import generate_response
 
 #Front End starts here
 st.title("Codei do Zero 🎵")
@@ -53,5 +42,7 @@ with form:
         else:
             my_bar = st.progress(0.05)
             st.subheader("Listen ")
+
+            generate_response(song_input)
 
 
