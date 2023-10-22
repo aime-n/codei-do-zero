@@ -57,5 +57,6 @@ if promissor_button:
     print('table')
     print(table)
 
-    midi = text_to_midi(table)
+    text_to_midi(table)
+    
 
