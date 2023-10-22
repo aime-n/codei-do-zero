@@ -10,7 +10,6 @@ NOTE_MAPPING = {
     'A': 69,  # A4 in MIDI
     'B': 71,  # B4 in MIDI
     'N': None, # No note (rest)
-
     'C/3': 48, 'C#/3': 49, 'D/3': 50, 'D#/3': 51, 'E/3': 52, 'F/3': 53, 'F#/3': 54, 'G/3': 55, 'G#/3': 56, 'A/3': 57, 'A#/3': 58, 'B/3': 59,
     'C/4': 60, 'C#/4': 61, 'D/4': 62, 'D#/4': 63, 'E/4': 64, 'F/4': 65, 'F#/4': 66, 'G/4': 67, 'G#/4': 68, 'A/4': 69, 'A#/4': 70, 'B/4': 71,
     'C/5': 72, 'C#/5': 73, 'D/5': 74, 'D#/5': 75, 'E/5': 76, 'F/5': 77, 'F#/5': 78, 'G/5': 79, 'G#/5': 80, 'A/5': 81, 'A#/5': 82, 'B/5': 83,
@@ -25,8 +24,8 @@ def text_to_midi(text, output_midi_file):
     track = 0
     channel = 0
     time = 0 
-    duration = 3
-    tempo = 200 
+    duration = 1 
+    tempo = 120 
     volume = 100 
     
     midi.addTempo(track, time, tempo)
@@ -51,10 +50,8 @@ def text_to_midi(text, output_midi_file):
         midi.writeFile(midi_file)
     print(f"MIDI file '{output_midi_file}' has been created.")
 
-chord = 'output_response.txt'
-
-with open(chord, 'r') as file:
+with open('midi_data\love_me_do.txt', 'r') as file:
     music_text = file.read()
 
 # Convert the text to a MIDI file
-text_to_midi(music_text, "midi/musica_gerada.mid")
+text_to_midi(music_text, "output_lovemedo.mid")
