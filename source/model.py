@@ -4,6 +4,23 @@ import os
 api_key = 'y7Pemp9bBQAX1DUwtP8bFtKssS4qSudAlzhQh87S'
 co = cohere.Client(api_key)
 
+def write_to_file(response_text, base_filename="output_response.txt"):
+    # Verifica se o arquivo já existe
+    if os.path.exists(base_filename):
+        # Se o arquivo existir, encontre um novo nome de arquivo
+        index = 1
+        while os.path.exists(f"{index}_{base_filename}"):
+            index += 1
+        filename = f"{index}_{base_filename}"
+    else:
+        filename = base_filename
+    
+    # Escreve o texto no arquivo
+    with open(filename, 'w') as file:
+        file.write(response_text)
+    print(f"Response written to: {filename}")
+
+
 prompt = '''
 Below, I will give a song on an specified structure. 
 In first metadata gives the name of the original song (You must change this on your answer).
@@ -238,20 +255,16 @@ the melody starts here:
 163.208	200.431	D:maj
 200.431	204.560	N
 '''
-
 # model = 'command-nightly'
 model = 'f2e29a92-b7c1-44b0-8344-610a442ac4d2-ft'
-response = co.generate(  
-    model=model,  
-    prompt = prompt,  
-    # max_tokens=200, # This parameter is optional. 
-    temperature=0.3)
 
-intro_paragraph = response.generations[0].text
+def generate_response(prompt : str):
 
-# response = co.generate(
-#   model='f2e29a92-b7c1-44b0-8344-610a442ac4d2-ft',
-#   prompt=prompt)
+    response = co.generate(  
+        model=model,  
+        prompt = prompt,  
+        # max_tokens=200, # This parameter is optional. 
+        temperature=0.3)
 
 def write_to_file(response_text, base_filename="saidas_gustavo.txt"):
     # Verifica se o arquivo já existe
@@ -269,8 +282,7 @@ def write_to_file(response_text, base_filename="saidas_gustavo.txt"):
         file.write(response_text)
     print(f"Response written to: {filename}")
 
-
-response = response.generations[0].text
-print('Prediction: {}'.format(response))
-write_to_file(response, base_filename="saidas_gustavo.txt")
-write_to_file(prompt, base_filename="prompt.txt")
+    response = response.generations[0].text
+    print('Prediction: {}'.format(response))
+    write_to_file(response, base_filename="output_response.txt")
+    write_to_file(prompt, base_filename="prompt.txt")
