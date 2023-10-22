@@ -59,20 +59,25 @@ promissor_button = st.button("Promp para gerar música pronto")
 
 if promissor_button:
     st.balloons()
-
+    progress_bar = st.progress(0)
+    
     response = get_response_from_promissor_prompt()
+    progress_bar.progress(0.25)
     table = filter_table(response)
+    progress_bar.progress(0.50)
     print('table:')
     print(table)
     table_lines = table.strip().split('\n')
     # Splitting each line into columns and creating a DataFrame
     df = pd.DataFrame([line.split() for line in table_lines], columns=['Start', 'End', 'Chord'])
     st.dataframe(df)
+    progress_bar.progress(0.75)
 
     text_to_midi(table)
     midi_to_mp3()
     # Se você tiver o mp3 como bytes
     mp3_bytes = 'output.mp3'
+    progress_bar.progress(1.0)
 
     # Adiciona um player de áudio ao app com os bytes mp3
     st.audio(mp3_bytes, format='audio/mp3')
