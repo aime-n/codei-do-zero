@@ -54,4 +54,5 @@ with open('./saidas_gustavo.txt', 'r') as file:
     music_text = file.read()
 
 # Convert the text to a MIDI file
-text_to_midi(music_text, "output_lovemedo2.mid")
+if __name__ == "__main__":
+    text_to_midi(music_text, "output_lovemedo2.mid")

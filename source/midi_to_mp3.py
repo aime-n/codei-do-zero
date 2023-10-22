@@ -9,5 +9,6 @@ def midi_to_mp3(midi_file_path, mp3_file_path):
     # Convert WAV to MP3
     AudioSegment.from_wav('output.wav').export(mp3_file_path, format="mp3")
 
-# Usage example
-midi_to_mp3('midi/musica_gerada.mid', 'output.mp3')
+if __name__ == "__main__":
+    # Usage example
+    midi_to_mp3('midi/musica_gerada.mid', 'output.mp3')

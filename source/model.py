@@ -1,8 +1,11 @@
 import cohere 
 import os
+import re
 
 api_key = 'y7Pemp9bBQAX1DUwtP8bFtKssS4qSudAlzhQh87S'
 co = cohere.Client(api_key)
+# model = 'command-nightly'
+model = 'f2e29a92-b7c1-44b0-8344-610a442ac4d2-ft'
 
 def write_to_file(response_text, base_filename="output_response.txt"):
     # Verifica se o arquivo já existe
@@ -255,16 +258,39 @@ the melody starts here:
 163.208	200.431	D:maj
 200.431	204.560	N
 '''
-# model = 'command-nightly'
-model = 'f2e29a92-b7c1-44b0-8344-610a442ac4d2-ft'
+
+
+def get_response_from_promissor_prompt():
+    api_key = 'y7Pemp9bBQAX1DUwtP8bFtKssS4qSudAlzhQh87S'
+    co = cohere.Client(api_key)
+
+    prompt_path = 'prompt\prompt_5_promissorporra - sem resposta.txt'
+    # Reading the entire file content at once
+    with open(prompt_path, 'r') as file:
+        prompt = file.read()
+
+    model = 'command-nightly'
+    # model = 'e0e24dd3-2818-4af4-b847-57a0f244e277-ft'
+    # model = 'base'
+    response = co.generate(  
+        model=model,  
+        prompt = prompt,
+        # max_tokens=200, # This parameter is optional. 
+        temperature=0.7,
+        max_tokens=200)
+
+    response = response.generations[0].text
+    print('Prediction:\n{}'.format(response))
+    return response
 
 def generate_response(prompt : str):
-
+    co = cohere.Client(api_key)
     response = co.generate(  
         model=model,  
         prompt = prompt,  
         # max_tokens=200, # This parameter is optional. 
         temperature=0.3)
+    return response.generations[0].text
 
 def write_to_file(response_text, base_filename="saidas_gustavo.txt"):
     # Verifica se o arquivo já existe
@@ -286,3 +312,16 @@ def write_to_file(response_text, base_filename="saidas_gustavo.txt"):
     print('Prediction: {}'.format(response))
     write_to_file(response, base_filename="output_response.txt")
     write_to_file(prompt, base_filename="prompt.txt")
+
+
+def filter_table(output):
+
+    # Using a regex to match lines that look like table rows
+    table_lines = re.findall(r"([\d.]+)\s+([\d.]+)\s+(\S+)", output)
+
+    # Joining each matching line with a newline character to get the table as a single string
+    table_string = "\n".join(["   ".join(line) for line in table_lines])
+    return table_string
+
+if __name__ == "__main__":
+    get_response_from_promissor_prompt()
