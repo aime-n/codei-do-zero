@@ -2,6 +2,7 @@ import streamlit as st
 import cohere
 # from source.midi_to_mp3 import midi_to_mp3
 from source.model import generate_response, get_response_from_promissor_prompt, filter_table, get_response_from_promissor_prompt_continuacao
+from source.model import get_musica_1
 from source.chords_to_midi import text_to_midi
 from source.midi_to_mp3 import midi_to_mp3
 import pandas as pd
@@ -47,6 +48,11 @@ with form:
             st.subheader("Listen ")
 
             generate_response(song_input)
+
+musica1 = get_musica_1()
+text_to_midi(musica1, output_midi_file="musica1.mid")
+midi_to_mp3(midi_file_path='musica1.mid', mp3_file_path='musica1.mp3')
+st.audio('musica1.mp3', format='audio/mp3')
 
 # New End button
 promissor_button = st.button("Promp para gerar música pronto")
