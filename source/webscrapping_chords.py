@@ -5,8 +5,6 @@ from urllib.parse import urljoin
 from source.lastfm_api import fetch_track_info
 
 
-
-
 def tratar_beatles(nome):
     nome = nome.replace('_', ' ')
     nome = nome.split('-')[1]
