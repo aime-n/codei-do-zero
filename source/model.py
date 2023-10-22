@@ -491,7 +491,7 @@ def get_response_from_promissor_prompt_continuacao(table):
         prompt = prompt_continuacao,
         # max_tokens=200, # This parameter is optional. 
         temperature=0.7,
-        max_tokens=200)
+        max_tokens=500)
 
     response = response.generations[0].text
     print('Prediction:\n{}'.format(response))

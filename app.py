@@ -31,7 +31,7 @@ st.audio('musica1.mp3', format='audio/mp3')
 song_input_default = ""
 
 preenchimento = False
-if st.button('Preencher Prompt de Texto'):
+if st.button('Fill prompt text'):
         song_input_default = get_prompt_padrao()  # Texto que você quer preencher automaticamente
         preenchimento = True
 else:
@@ -57,7 +57,7 @@ with form:
     with col2:
         # User input - The 'temperature' value representing the level of creativity
         creativity_input = st.slider(
-            "Creativi   \\\\\\\\\\ty",
+            "Creativity",
             value=0.5,
             key="creativity_input",
             min_value=0.1,
@@ -72,24 +72,19 @@ with form:
             song_input_default = get_prompt_padrao()
         progress_bar = st.progress(0.05)
         response = generate_response(song_input_default)
-        st.write('Request 200')
         progress_bar.progress(0.25)
 
         table = filter_table(response)
-        st.write('Tabela recebida no formato correto.')
         progress_bar.progress(0.50)
         print('table:')
         print(table)
         table_lines = table.strip().split('\n')
         # Splitting each line into columns and creating a DataFrame
         df = pd.DataFrame([line.split() for line in table_lines], columns=['Start', 'End', 'Chord'])
-        st.dataframe(df)
         progress_bar.progress(0.75)
 
         text_to_midi(table)
-        st.write('Convertido para MIDI.')
         midi_to_mp3()
-        st.write('Convertido para mp3.')
         # Se você tiver o mp3 como bytes
         mp3_bytes = 'output.mp3'
         progress_bar.progress(1.0)
