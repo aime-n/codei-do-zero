@@ -1,6 +1,15 @@
 mido
 midi2audio
+midiutil
 pydub
 cohere
 streamlit
 ffmpeg
+pandas
+glob
+time
+bs4
+requests
+re
+os
+urllib

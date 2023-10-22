@@ -1,5 +1,4 @@
 import requests
-import json
 
 # Define your API key here
 API_KEY = "1f1e861cb85a624a24a4d969c230a10d"
