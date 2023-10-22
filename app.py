@@ -61,5 +61,4 @@ if promissor_button:
     print(table)
 
     midi = text_to_midi(table)
-    mp3 = 
 
