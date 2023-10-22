@@ -71,20 +71,19 @@ if promissor_button:
     # Adiciona um player de áudio ao app com os bytes mp3
     st.audio(mp3_bytes, format='audio/mp3')
     
-continuacao_button = st.button("Promp para continuar música gerada")
+    continuacao_button = st.button("Promp para continuar música gerada")
+    if continuacao_button:
+        st.balloons()
 
-if continuacao_button:
-    st.balloons()
+        response = get_response_from_promissor_prompt_continuacao(table)
+        table = filter_table(response)
+        print('table')
+        print(table)
 
-    response = get_response_from_promissor_prompt_continuacao(table)
-    table = filter_table(response)
-    print('table')
-    print(table)
+        text_to_midi(table)
+        midi_to_mp3()
+        # Se você tiver o mp3 como bytes
+        mp3_bytes = b'output'
 
-    text_to_midi(table)
-    midi_to_mp3()
-    # Se você tiver o mp3 como bytes
-    mp3_bytes = b'output'
-
-    # Adiciona um player de áudio ao app com os bytes mp3
-    st.audio(mp3_bytes, format='audio/mp3')
+        # Adiciona um player de áudio ao app com os bytes mp3
+        st.audio(mp3_bytes, format='audio/mp3') 
