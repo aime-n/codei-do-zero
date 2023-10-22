@@ -3,6 +3,7 @@ import cohere
 # from source.midi_to_mp3 import midi_to_mp3
 from source.model import generate_response, get_response_from_promissor_prompt, filter_table
 from source.chords_to_midi import text_to_midi
+from source.midi_to_mp3 import midi_to_mp3
 
 #Front End starts here
 st.title("Codei do Zero 🎵")
@@ -58,5 +59,11 @@ if promissor_button:
     print(table)
 
     text_to_midi(table)
+    midi_to_mp3()
+    # Se você tiver o mp3 como bytes
+    mp3_bytes = b'output'
+
+    # Adiciona um player de áudio ao app com os bytes mp3
+    st.audio(mp3_bytes, format='audio/mp3')
     
 
