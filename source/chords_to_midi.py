@@ -18,7 +18,7 @@ NOTE_MAPPING = {
 
 
 # Define a function to convert your text to MIDI
-def text_to_midi(text, output_midi_file):
+def text_to_midi(text, output_midi_file="output_music.mid"):
     midi = MIDIFile(1)
     
     track = 0
