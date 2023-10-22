@@ -1,0 +1,36 @@
+
+**Create a Detailed Melody: Compose a One-Minute Song**
+
+Your task is to create a complex melody for a song that lasts at least one minute. Follow the structure outlined below, ensuring each element is carefully considered and detailed:
+
+- **Original Song Name**: Create a unique and evocative title for your song.
+- **Tags**: Define the musical genres or moods that best describe your composition.
+- **Song Wiki**: Share any backstories, inspirations, or contexts that may enrich the understanding or appreciation of the song.
+
+- **Melody Structure**: 
+    - Your melody should be structured with precise start times, end times, and chords.
+    - Ensure the composition is rich with variation, exploring different chords and progressions.
+    - Aim for a complexity that keeps the melody engaging throughout its duration.
+
+    Example:
+    ```
+    Original Song Name: "A Journey Through Soundscapes"
+    Tags: Ambient, Cinematic, Experimental
+    
+    Melody Structure:
+      0.000   0.500   Cmaj9  
+      0.500   1.000   Dsus2  
+      1.000   1.500   Em7  
+      1.500   2.000   Fmaj7#11  
+      2.000   2.500   G13  
+      2.500   3.000   Amin7  
+      3.000   3.750   B7b5  
+      ... (Continue this pattern, varying the chords and durations) ...
+     59.000  60.000  Cmaj7  
+    ```
+    
+- **Guidelines**:
+    - Feel free to explore unconventional chords and transitions, fostering a sense of musical exploration.
+    - Aim to fill the entirety of the one-minute duration, ensuring a rich melodic progression.
+    - Keep the melody dynamic with a balance of tension and resolution, unexpected turns, and emotive chords.
+

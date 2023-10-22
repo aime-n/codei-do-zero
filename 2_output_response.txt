@@ -1,0 +1,26 @@
+ Title: "Lost in Emotions"
+Tags: Ballad, Emotional, Indie Pop
+
+Wiki: 
+The song "Lost in Emotions" is a heart-wrenching ballad that takes the listener on an emotional journey. It explores the complexities of love, longing, and the struggles of navigating intense feelings. Inspired by real-life experiences and the artist's own journey of self-discovery, this song aims to capture the raw vulnerability of the human condition.
+
+Melody Structure:
+
+| Bars | Chords |
+|------ | ------- |
+| 1-8  | Cmaj7 - Gsus4 - Am7 - Fmaj7 |
+| 9-16 | Gm7 - D7 - Em7 - Dm7 |
+| 17-24 | Bb5 - F#m7 - A7 - E maj7 |
+| 25-32 | Edim7 - Abmaj7 - Gmaj7 - D7 |
+| 33-40 | Gm7 - C7 - Fmaj7 - Gsus4 |
+| 41-48 | Am7 - Dm7 - Dmaj7 - Em7 |
+| 49-56 | F#m7 - A7 - E maj7 - Dm7 |
+| 57-64 | Gmaj7 - D7 - Am7 - Fmaj7  |
+
+The song starts with a tender Cmaj7 chord, setting a serene atmosphere. As the verse progresses, the melody slowly builds tension with Gsus4 and Am7, leading to a yearning Fmaj7 chord. The pre-chorus introduces Gm7 and D7, creating a sense of longing before resolving to Em7 and Dm7.
+
+The chorus begins with a somber Bb5, expressing the depths of sadness. The melody moves between melancholy chords (F#m7, A7, and E maj7) before gently resolving back to Dm7.
+
+The second verse maintains the emotional intensity with Edim7 and Abmaj7, eventually moving to a brighter Gmaj7 and D7. The bridge introduces new flavors with Gm7 and C7, paving the way for a cathartic Fmaj7 and a tender Gsus4 to close the song. 
+
+Throughout "Lost in Emotions," the melody intricately weaves between major and minor chords, creating a dynamic and ever-changing soundscape that reflects the ups and downs of intense emotions. The song's progression perfectly complements the heartfelt lyrics, taking the listener on a captivating and relatable journey.

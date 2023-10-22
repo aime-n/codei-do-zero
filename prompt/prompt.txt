@@ -1,0 +1,27 @@
+
+
+**Compose a Song Following the Given Structure**
+
+- **Original Song Name**: a flower bird
+- **Tags**: rock
+- **Song Wiki**: a sad song
+
+**Melody Structure**:
+- Follow the example below, keeping the columns for start time, end time, and chord.
+
+```
+Original Song Name: "Invented Title"
+Tags: Pop, Soul
+
+Melody Structure:
+0.000   0.310   Am  
+0.310   0.389   F#m  
+0.389   0.487   D  
+0.487   0.566   G  
+0.566   0.634   Am  
+0.634   0.787   F#m  
+0.787   0.905   D  
+0.905   1.000   G  
+```
+
+

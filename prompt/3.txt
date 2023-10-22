@@ -1,0 +1,18 @@
+Presented below is a song in a specific format:
+
+Original Song Name: (For this prompt, feel free to create a new name)
+Song Tags: Representing the genre or mood of the song.
+Song Wiki: Additional context about the song (if not 'None').
+Melody Structure: Detailed in three columns - start_time, end_time, and chord.
+Using the same format, craft a song similar to the one provided:
+
+mathematica
+Copy code
+Metadata:
+Original Song Name: "Queen - Friends Will Be Friends.txt"
+Tags: rock
+
+Melody Starts Here:
+0.000	0.427	N
+... [rest of the song's chords and timings] ...
+245.197	248.893	N
