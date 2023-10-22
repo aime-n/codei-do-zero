@@ -470,6 +470,9 @@ prompt_musica_1 = '''
 def get_musica_1():
     return prompt_musica_1
 
+def get_prompt_padrao():
+    return prompt
+
 def get_response_from_promissor_prompt_continuacao(table):
     api_key = 'y7Pemp9bBQAX1DUwtP8bFtKssS4qSudAlzhQh87S'
     co = cohere.Client(api_key)
@@ -495,6 +498,8 @@ def get_response_from_promissor_prompt_continuacao(table):
     return response
 
 def get_response_from_promissor_prompt():
+    global function_running  # Usa a variável global
+    function_running = True
     api_key = 'y7Pemp9bBQAX1DUwtP8bFtKssS4qSudAlzhQh87S'
     co = cohere.Client(api_key)
 
@@ -515,16 +520,26 @@ def get_response_from_promissor_prompt():
 
     response = response.generations[0].text
     print('Prediction:\n{}'.format(response))
+    function_running = False
     return response
 
 def generate_response(prompt : str):
+    global function_running  # Usa a variável global
+    function_running = True
+    api_key = 'y7Pemp9bBQAX1DUwtP8bFtKssS4qSudAlzhQh87S'
     co = cohere.Client(api_key)
+    model = 'command-nightly'
+    # model = 'e0e24dd3-2818-4af4-b847-57a0f244e277-ft'
+    # model = 'base'
     response = co.generate(  
         model=model,  
-        prompt = prompt,  
-        # max_tokens=200, # This parameter is optional. 
-        temperature=0.3)
-    return response.generations[0].text
+        prompt = prompt,
+        temperature=0.7,
+        max_tokens=200)
+    response = response.generations[0].text
+    print('Prediction:\n{}'.format(response))
+    function_running = False
+    return response
 
 def write_to_file(response_text, base_filename="saidas_gustavo.txt"):
     # Verifica se o arquivo já existe
