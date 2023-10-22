@@ -61,7 +61,7 @@ if promissor_button:
     text_to_midi(table)
     midi_to_mp3()
     # Se você tiver o mp3 como bytes
-    mp3_bytes = b'output'
+    mp3_bytes = 'output.mp3'
 
     # Adiciona um player de áudio ao app com os bytes mp3
     st.audio(mp3_bytes, format='audio/mp3')

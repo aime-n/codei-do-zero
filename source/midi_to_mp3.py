@@ -1,7 +1,7 @@
 from midi2audio import FluidSynth
 from pydub import AudioSegment
 
-def midi_to_mp3(midi_file_path='output.mid', mp3_file_path='output.m'):
+def midi_to_mp3(midi_file_path='output.mid', mp3_file_path='output.mp3'):
     # Convert MIDI to WAV
     fs = FluidSynth()
     fs.midi_to_audio(midi_file_path, 'output.wav')
