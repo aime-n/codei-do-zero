@@ -22,19 +22,25 @@ def run_progress_bar():
             progress.progress += increment  # Incrementa a barra de progresso
         time.sleep(0.1)  # Pausa entre as atualizações
 
+
+# musica1 = get_musica_1()
+# text_to_midi(musica1, output_midi_file="musica1.mid")
+# midi_to_mp3(midi_file_path='musica1.mid', mp3_file_path='musica1.mp3')
+# st.audio('musica1.mp3', format='audio/mp3')
+# Botão para preencher o campo de texto
+song_input_default = ""
+
+preenchimento = False
+if st.button('Preencher Prompt de Texto'):
+        song_input_default = get_prompt_padrao()  # Texto que você quer preencher automaticamente
+        preenchimento = True
+else:
+    song_input_default = ""
 form = st.form(key="user_settings")
 with form:
-    musica1 = get_musica_1()
-    text_to_midi(musica1, output_midi_file="musica1.mid")
-    midi_to_mp3(midi_file_path='musica1.mid', mp3_file_path='musica1.mp3')
-    st.audio('musica1.mp3', format='audio/mp3')
-    # Botão para preencher o campo de texto
-    if st.button('Preencher Prompt de Texto'):
-        song_input_default = get_prompt_padrao()  # Texto que você quer preencher automaticamente
-    else:
-        song_input_default = ""
     # User input - Song mid to txt
     song_input = st.text_input("Song", value=song_input_default, key="song_input")
+    generate_button = form.form_submit_button("Generate Song")
 
     # Create a two-column view
     col1, col2 = st.columns(2)
@@ -59,44 +65,41 @@ with form:
             help="Lower values generate more “predictable” output, higher values generate more “creative” output",
         )
     # Submit button to start generating a song
-    generate_button = form.form_submit_button("Generate Song")
 
     if generate_button:
         st.balloons()
+        if song_input_default == "":
+            song_input_default = get_prompt_padrao()
+        progress_bar = st.progress(0.05)
+        response = generate_response(song_input_default)
+        st.write('Request 200')
+        progress_bar.progress(0.25)
 
-        if song_input == "":
-            st.error("Music field cannot be blank")
-        else:
-            progress_bar = st.progress(0.05)
-            response = generate_response(song_input)
-            st.write('Request 200')
-            progress_bar.progress(0.25)
+        table = filter_table(response)
+        st.write('Tabela recebida no formato correto.')
+        progress_bar.progress(0.50)
+        print('table:')
+        print(table)
+        table_lines = table.strip().split('\n')
+        # Splitting each line into columns and creating a DataFrame
+        df = pd.DataFrame([line.split() for line in table_lines], columns=['Start', 'End', 'Chord'])
+        st.dataframe(df)
+        progress_bar.progress(0.75)
 
-            table = filter_table(response)
-            st.write('Tabela recebida no formato correto.')
-            progress_bar.progress(0.50)
-            print('table:')
-            print(table)
-            table_lines = table.strip().split('\n')
-            # Splitting each line into columns and creating a DataFrame
-            df = pd.DataFrame([line.split() for line in table_lines], columns=['Start', 'End', 'Chord'])
-            st.dataframe(df)
-            progress_bar.progress(0.75)
-
-            text_to_midi(table)
-            st.write('Convertido para MIDI.')
-            midi_to_mp3()
-            st.write('Convertido para mp3.')
-            # Se você tiver o mp3 como bytes
-            mp3_bytes = 'output.mp3'
-            progress_bar.progress(1.0)
-            # Adiciona um player de áudio ao app com os bytes mp3
-            st.audio(mp3_bytes, format='audio/mp3')
+        text_to_midi(table)
+        st.write('Convertido para MIDI.')
+        midi_to_mp3()
+        st.write('Convertido para mp3.')
+        # Se você tiver o mp3 como bytes
+        mp3_bytes = 'output.mp3'
+        progress_bar.progress(1.0)
+        # Adiciona um player de áudio ao app com os bytes mp3
+        st.audio(mp3_bytes, format='audio/mp3')
 
 
 
 # New End button
-promissor_button = st.button("Promp para gerar música pronto")
+# promissor_button = st.button("Promp para gerar música pronto")
 
 
 
