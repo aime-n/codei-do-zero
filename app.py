@@ -59,7 +59,7 @@ promissor_button = st.button("Promp para gerar música pronto")
 
 if promissor_button:
     st.balloons()
-    progress_bar = st.progress(0)
+    progress_bar = st.progress(0.05)
     
     response = get_response_from_promissor_prompt()
     progress_bar.progress(0.25)
