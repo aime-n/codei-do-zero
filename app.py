@@ -51,10 +51,7 @@ promissor_button = st.button("Promp para gerar música pronto")
 
 if promissor_button:
     st.balloons()
-    prompt_path = 'prompt\prompt_5_promissorporra - sem resposta.txt'
-    # Reading the entire file content at once
-    with open(prompt_path, 'r') as file:
-        prompt = file.read()
+
     response = get_response_from_promissor_prompt()
     table = filter_table(response)
     print('table')
