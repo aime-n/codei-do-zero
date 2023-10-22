@@ -325,7 +325,29 @@ A possible example that I can give to you is the one below.
 173.106	173.763	Eb
 173.763	175.827	N
 '''
+def get_response_from_promissor_prompt_continuacao(table):
+    api_key = 'y7Pemp9bBQAX1DUwtP8bFtKssS4qSudAlzhQh87S'
+    co = cohere.Client(api_key)
 
+    prompt_continuacao = f'''
+    Given the following chord progression in a song, continue after the end the chord sequence in a musically coherent manner, 
+    maintaining the same format, repeat the chord progression and add the continuation:
+    {table}
+    '''
+
+    model = 'command-nightly'
+    # model = 'e0e24dd3-2818-4af4-b847-57a0f244e277-ft'
+    # model = 'base'
+    response = co.generate(  
+        model=model,  
+        prompt = prompt_continuacao,
+        # max_tokens=200, # This parameter is optional. 
+        temperature=0.7,
+        max_tokens=200)
+
+    response = response.generations[0].text
+    print('Prediction:\n{}'.format(response))
+    return response
 
 def get_response_from_promissor_prompt():
     api_key = 'y7Pemp9bBQAX1DUwtP8bFtKssS4qSudAlzhQh87S'
@@ -391,4 +413,18 @@ def filter_table(output):
     return table_string
 
 if __name__ == "__main__":
-    get_response_from_promissor_prompt()
+    table = '''
+0.000	0.427	N
+0.427	2.133	G
+2.133	3.733	B:7
+3.733	5.357	E:min
+5.357	6.941	G:7
+6.941	8.605	C
+8.605	9.336	F
+9.336	10.141	C
+10.141	11.726	G
+11.726	13.342	D/3
+13.342	14.901	E:min
+14.901	15.720	B:min
+    '''
+    get_response_from_promissor_prompt_continuacao(table)

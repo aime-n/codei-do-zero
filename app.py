@@ -1,9 +1,10 @@
 import streamlit as st
 import cohere
 # from source.midi_to_mp3 import midi_to_mp3
-from source.model import generate_response, get_response_from_promissor_prompt, filter_table
+from source.model import generate_response, get_response_from_promissor_prompt, filter_table, get_response_from_promissor_prompt_continuacao
 from source.chords_to_midi import text_to_midi
 from source.midi_to_mp3 import midi_to_mp3
+import pandas as pd
 
 #Front End starts here
 st.title("Codei do Zero 🎵")
@@ -55,8 +56,12 @@ if promissor_button:
 
     response = get_response_from_promissor_prompt()
     table = filter_table(response)
-    print('table')
+    print('table:')
     print(table)
+    table_lines = table.strip().split('\n')
+    # Splitting each line into columns and creating a DataFrame
+    df = pd.DataFrame([line.split() for line in table_lines], columns=['Start', 'End', 'Chord'])
+    st.dataframe(df)
 
     text_to_midi(table)
     midi_to_mp3()
@@ -66,4 +71,20 @@ if promissor_button:
     # Adiciona um player de áudio ao app com os bytes mp3
     st.audio(mp3_bytes, format='audio/mp3')
     
+continuacao_button = st.button("Promp para continuar música gerada")
 
+if continuacao_button:
+    st.balloons()
+
+    response = get_response_from_promissor_prompt_continuacao(table)
+    table = filter_table(response)
+    print('table')
+    print(table)
+
+    text_to_midi(table)
+    midi_to_mp3()
+    # Se você tiver o mp3 como bytes
+    mp3_bytes = b'output'
+
+    # Adiciona um player de áudio ao app com os bytes mp3
+    st.audio(mp3_bytes, format='audio/mp3')
