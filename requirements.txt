@@ -1,8 +1,6 @@
 mido
-<<<<<<< HEAD
 midi2audio
 pydub
-=======
 cohere
 streamlit
->>>>>>> 2e2d9bcbcaa67000fc06f9e9ee496eaf1b5d160d
+ffmpeg

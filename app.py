@@ -1,7 +1,8 @@
 import streamlit as st
 import cohere
-from source.midi_to_mp3 import midi_to_mp3
-from source.model import generate_response
+# from source.midi_to_mp3 import midi_to_mp3
+from source.model import generate_response, get_response_from_promissor_prompt, filter_table
+from source.chords_to_midi import text_to_midi
 
 #Front End starts here
 st.title("Codei do Zero 🎵")
@@ -13,7 +14,7 @@ with form:
 
     # Create a two-column view
     col1, col2 = st.columns(2)
-    with col1:
+    with col1:  
         # User input - The happiness of the generated song
         happiness_input = st.slider(
             "Happiness of ideas",
@@ -45,4 +46,20 @@ with form:
 
             generate_response(song_input)
 
+# New End button
+promissor_button = st.button("Promp para gerar música pronto")
+
+if promissor_button:
+    st.balloons()
+    prompt_path = 'prompt\prompt_5_promissorporra - sem resposta.txt'
+    # Reading the entire file content at once
+    with open(prompt_path, 'r') as file:
+        prompt = file.read()
+    response = get_response_from_promissor_prompt()
+    table = filter_table(response)
+    print('table')
+    print(table)
+
+    midi = text_to_midi(table)
+    mp3 = 
 
