@@ -1,8 +1,8 @@
-
-**codei-do-zero**
+# **codei-do-zero**
 
 Project for Semcomp 26 Hackathon
 
-Referencias
+# Utilização
 
-http://www.archduke.org/midi/
+- pip install -r requirements.txt
+- streamlit run app.py
